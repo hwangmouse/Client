@@ -1,0 +1,65 @@
+.login-container {
+  display: flex;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+}
+
+/* 왼쪽 로그인 폼 */
+.form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 100px;
+  background: #fff;
+}
+
+.form-section h1 {
+  color: #5b548a;
+  margin-bottom: 40px; /* 타이틀 아래 여백 */
+}
+
+.form-section label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #5b548a;
+}
+
+.form-section input {
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  background: #f9f9fc;
+  margin-bottom: 25px; /* ✅ 입력창들 사이 간격 */
+  display: block;
+  width: 100%;
+  font-size: 16px;
+}
+
+.form-section button {
+  padding: 15px;
+  border: none;
+  border-radius: 30px;
+  background-color: #5b548a;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px; /* 버튼 위 간격 */
+}
+
+/* 오른쪽 이미지 영역 */
+.image-section {
+  flex: 1;
+  background: #f9f9fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.placeholder-image {
+  width: 150px;
+  height: 150px;
+  background: #d1d1e0;
+  border-radius: 10px;
+}

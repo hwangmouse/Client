@@ -1,0 +1,63 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  border-bottom: 1px solid #eee;
+  box-shadow: 0 0 5px rgba(0,0,0,0.05);
+  position: relative;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+.nav {
+  position: absolute;
+  right: 200px; /* ← 로그아웃 + 아이콘 고려해서 nav 오른쪽으로 이동 */
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 400;
+  transition: 0.2s ease;
+}
+
+.nav-link:hover {
+  font-weight: 600;
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link.active {
+  font-weight: 600;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logout-button {
+  background: none;
+  border: none;
+  color: #333;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.logout-button:hover {
+  font-weight: 600;
+  text-shadow: 0 0 1px rgba(0,0,0,0.15);
+}
+
+.user-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #aaa;
+}
