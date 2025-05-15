@@ -1,0 +1,63 @@
+/* Layout */
+.container {
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px;
+  background: #f9f9f9;
+  flex-grow: 1;
+}
+.hero-left {
+  max-width: 50%;
+}
+.hero-title {
+  font-size: 48px;
+  margin: 20px 0;
+  font-weight: bold;
+  color: #222;
+}
+.hero-description {
+  color: #666;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+.hero-buttons button {
+  padding: 12px 24px;
+  border-radius: 4px;
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.btn-primary {
+  background-color: #000;
+  color: white;
+  border: none;
+}
+.btn-secondary {
+  background-color: transparent;
+  border: 1px solid #333;
+  color: #333;
+}
+.image-placeholder {
+  width: 700px;
+  height: 500px;
+  background: #cdd1d4;
+  border-radius: 20px;
+}
+.image-inside {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지 잘림 없이 꽉 채우기 */
+  border-radius: 20px; /* div와 동일하게 */
+}
+.small-text {
+  color: #000000;
+}

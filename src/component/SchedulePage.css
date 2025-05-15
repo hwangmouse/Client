@@ -1,0 +1,71 @@
+/* SchedulePage.css */
+.schedule-container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  padding: 3rem 2rem;
+}
+
+.schedule-box {
+  position: relative;
+  width: 350px;
+  height: 450px;
+  border-radius: 12px;
+  border: 1px solid #dcdcdc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.5rem;
+}
+
+.my-schedule {
+  background-color: #5e548e;
+  border: none;
+}
+
+.group-schedule {
+  background-color: white;
+}
+
+.schedule-label {
+  background-color: white;
+  color: #5e548e;
+  padding: 0.5rem 1.5rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.schedule-label.group {
+  background-color: #5e548e;
+  color: white;
+}
+
+.add-button-purple {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #5e548e;
+  color: white;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.add-button-white {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: white;
+  color: #5e548e;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
