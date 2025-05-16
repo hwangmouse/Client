@@ -1,12 +1,11 @@
 // CommunityPage.js
 import React from "react";
-import Header from "../Header/Header";
+import Header from "./Header";
 import "./CommunityPage.css";
 
 const CommunityPage = () => {
   return (
     <div>
-      <Header />
       <div className="community-container">
         <h2 className="community-title">Community</h2>
 

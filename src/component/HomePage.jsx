@@ -6,27 +6,6 @@ import './Footer.css';     // Footer 스타일
 const HomePage = () => {
   return (
     <div className="container">
-      {/* Header */}
-      <header className="header">
-        <div className="logo">StudySync</div>
-        <nav className="nav">
-          <a href="#" className="nav-link">Home</a>
-          <a href="#" className="nav-link">studygroup</a>
-          <a href="#" className="nav-link">schedule</a>
-          <a href="#" className="nav-link">community</a>
-        </nav>
-
-        <div className="header-search">
-          <input type="text" placeholder="Search" className="search-input" />
-          <button className="search-button">🔍</button>
-        </div>
-
-        <div className="header-right">
-          <a href="#" className="nav-link">Register</a>
-          <a href="#" className="login-button">Log In</a>
-        </div>
-      </header>
-
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-left">

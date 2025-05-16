@@ -1,12 +1,11 @@
 // SchedulePage.jsx
 import React from "react";
-import Header from "../Header/Header";
+import Header from "./Header";
 import "./SchedulePage.css";
 
 const SchedulePage = () => {
   return (
     <div>
-      <Header />
       <div className="schedule-container">
         <div className="schedule-box my-schedule">
           <div className="schedule-label">My Schedule</div>
