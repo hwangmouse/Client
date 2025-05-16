@@ -8,6 +8,7 @@ import LoginForm from './component/LoginForm';
 import StudyGroupList from './component/StudyGroupList';
 import SchedulePage from './component/SchedulePage';
 import CommunityPage from './component/CommunityPage';
+import CommunityDetail from './component/CommunityDetail';
 import SignupForm from './component/SignupForm';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path="/studygroup" element={isAuthenticated? <StudyGroupList /> : <Navigate to="/login" replace />} />
           <Route path="/schedule" element={isAuthenticated? <SchedulePage /> : <Navigate to="/login" replace />} />
           <Route path="/community" element={isAuthenticated? <CommunityPage /> : <Navigate to="/login" replace />} />
+          <Route path="/community/:id" element={<CommunityDetail />} />
         </Routes>
       </div>
     </Router>
