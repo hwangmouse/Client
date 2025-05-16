@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-const Header = () => {
+const Header = ({isAuthenticated, onLogout}) => {
   return (
     <header className="header">
       <div className="logo">StudySync</div>
@@ -18,8 +18,15 @@ const Header = () => {
         <button className="search-button">🔍</button>
       </div>
       <div className="header-right">
-        <Link to="/signup" className="nav-link">Register</Link>
-        <Link to="/login" className="login-button">Log In</Link>
+        {!isAuthenticated && (
+          <>
+            <Link to="/signup" className="nav-link">Register</Link>
+            <Link to="/login" className="login-button">Log In</Link>
+          </>
+        )}
+        {isAuthenticated && (
+          <button className="login-button" onClick={onLogout}>Log Out</button>
+        )}
       </div>
     </header>
   );
