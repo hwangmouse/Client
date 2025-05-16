@@ -1,6 +1,7 @@
 // src/components/StudyGroupList.js
 import React from "react";
 import "./StudyGroupList.css";
+import "./Header.jsx";
 
 const dummyGroups = Array.from({ length: 6 }, () => ({
   id: 10229485,
