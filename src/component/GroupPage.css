@@ -1,0 +1,131 @@
+/* GroupPage.css */
+
+.group-page-wrapper {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  color: #222;
+}
+
+.group-page-wrapper.large {
+  max-width: 1000px;
+}
+
+.groupPage-header {
+  margin-bottom: 2rem;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.group-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+.group-header p {
+  color: #666;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.group-header h1.shrink {
+  font-size: 1.5rem;
+}
+
+.group-header p.shrink {
+  font-size: 0.85rem;
+}
+
+.tab-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+  gap: 1rem;
+}
+
+.tab-buttons button {
+  background-color: #f3e8ff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  color: #4a148c;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.tab-buttons button.active {
+  background-color: #6b46c1;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.member-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.announcement-card,
+.schedule-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.request-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background-color: #fdfdfd;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.request-row .user-id {
+  flex: 1;
+}
+
+.request-row button {
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.request-row button.approve {
+  background-color: #38a169;
+  color: white;
+}
+
+.request-row button.reject {
+  background-color: #e53e3e;
+  color: white;
+}

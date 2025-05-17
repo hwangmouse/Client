@@ -1,73 +1,224 @@
+body {
+  background-color: white !important;
+  color: #222 !important;
+}
+
+
 .studygroup-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
   background-color: #ffffff;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
 }
 
 .title {
   font-size: 2rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+  color: #333;
+}
+
+/* ✅ 생성 버튼 상단 우측 정렬 */
+.create-container {
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+/* ✅ 그룹 생성 버튼 스타일 */
+.create-button {
+  background-color: #38a169;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.create-button:hover {
+  background-color: #2f855a;
 }
 
 .search-container {
   display: flex;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
   margin-bottom: 2rem;
   gap: 0.5rem;
 }
 
 .search-input {
-  flex-grow: 1;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
   border: 1px solid #ccc;
+  font-size: 1rem;
 }
 
 .search-button {
   background-color: #6b46c1;
   color: white;
   border: none;
-  border-radius: 9999px;
-  padding: 0.5rem 1.5rem;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s;
 }
 
-.group-list {
+.search-button:hover {
+  background-color: #553c9a;
+}
+
+.group-box {
   width: 100%;
-  max-width: 540px;
+  max-width: 600px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  background-color: #fafafa;
 }
 
-.group-item {
-  display: flex;
-  justify-content: space-between;
+.group-header {
+  display: grid;
+  grid-template-columns: 100px 220px 100px 100px 55px;
+  padding: 0.75rem 1rem;
+  background-color: #f3e8ff;
+  font-weight: 600;
+  color: #4a148c;
+  border-bottom: 1px solid #d6bcfa;
+  text-align: center;
+}
+
+.group-header > * {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.group-row {
+  display: grid;
+  grid-template-columns: 100px 220px 100px 100px 55px;
+  padding: 0.75rem 1rem;
   align-items: center;
-  border: 1px solid #d6bcfa;
-  border-radius: 9999px;
-  padding: 0.75rem 1.5rem;
-  margin-bottom: 1rem;
+  text-align: center;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.95rem;
 }
 
-.group-info {
-  display: flex;
-  gap: 1rem;
+.group-row:last-child {
+  border-bottom: none;
 }
 
-.pill {
-  border: 1px solid #6b46c1;
-  color: #6b46c1;
-  padding: 0.3rem 0.75rem;
-  border-radius: 9999px;
+.group-row:nth-child(even) {
+  background-color: #f9f9f9;
 }
 
 .join-button {
   background-color: #6b46c1;
   color: white;
   border: none;
-  border-radius: 9999px;
-  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.join-button:hover {
+  background-color: #553c9a;
+}
+
+.create-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  background-color: #f8f8ff;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.create-form input,
+.create-form select {
+  padding: 0.6rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #ECF3FB;
+  color:#333;
+}
+
+.create-form button {
+  background-color: #38a169;
+  color: white;
+  border: none;
+  padding: 0.6rem;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.create-form button:hover {
+  background-color: #2f855a;
+}
+
+/* 전체 화면 덮는 어두운 배경 */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* 중앙 팝업 박스 */
+.modal-content {
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* 버튼 정렬 */
+.modal-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.cancel-button {
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.cancel-button:hover {
+  background-color: #c53030;
 }
