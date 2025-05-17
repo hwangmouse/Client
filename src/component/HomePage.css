@@ -1,3 +1,8 @@
+body {
+  background-color: white !important;
+  color: #222 !important;
+}
+
 /* Layout */
 .container {
   font-family: 'Arial', sans-serif;

@@ -1,4 +1,9 @@
 /* SchedulePage.css */
+body {
+  background-color: white !important;
+  color: #222 !important;
+}
+
 .schedule-container {
   display: flex;
   justify-content: center;
