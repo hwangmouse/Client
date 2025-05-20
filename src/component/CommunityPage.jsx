@@ -2,6 +2,7 @@
 import React, {useState} from "react";
 import Header from "./Header";
 import { Link } from 'react-router-dom';
+import CommunityForm from "./CommunityForm";
 import "./CommunityPage.css";
 
 const CommunityPage = () => {
@@ -10,6 +11,13 @@ const CommunityPage = () => {
     { id: 1, title: "test1", createdAt: "2025-00-00" },
     { id: 2, title: "test2", createdAt: "2025-00-00" }
   ]);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleSubmit = (formData) => {
+    // 서버랑 연결 로직 작성
+    setShowModal(false);
+  }
 
   return (
     <div>
@@ -41,7 +49,9 @@ const CommunityPage = () => {
                 posts.map((post, idx) => (
                   <tr key={post.id}>
                     <td>{idx+1}</td>
+                    <td>
                     <Link to={`/community/${post.id}`}>{post.title}</Link>
+                    </td>
                     <td>{post.createdAt}</td>
                   </tr>
                 )
@@ -57,10 +67,20 @@ const CommunityPage = () => {
           </div>
 
           <div className="post">
-            <button>{"post"}</button>
+            <button onClick={()=> setShowModal(true)}>post</button>
           </div>
         </div>
       </div>
+      {showModal && (
+        <div className="modal-backdrop">
+          <div className="modal">
+            <CommunityForm
+              onSubmit={handleSubmit}
+              onCancel={()=>setShowModal(false)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom'
 import './Header.css';     // Header 스타일
 import './HomePage.css';   // Hero 섹션 등 나머지 스타일
 import './Footer.css';     // Footer 스타일
@@ -17,7 +18,7 @@ const HomePage = () => {
           </p>
           <div className="hero-buttons">
             <button className="btn-primary">Join Study</button>
-            <button className="btn-secondary">See all studies</button>
+            <Link to={'/studygroup'}><button className="btn-secondary">See all studies</button></Link>
           </div>
         </div>
         <div className="hero-right">

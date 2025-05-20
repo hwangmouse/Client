@@ -89,6 +89,23 @@ body {
   padding: 0 1rem 1rem 0;
 }
 
+.modal-backdrop {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.modal {
+  background: #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  min-width: 350px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+}
+
 .add-button-purple {
   position: absolute;
   right: 1rem;
