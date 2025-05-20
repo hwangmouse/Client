@@ -1,10 +1,10 @@
-// src/components/CreateGroupForm.js
 import React, { useState } from "react";
 import "./StudyGroupList.css";
 
 const CreateGroupForm = ({ onSubmit, onClose }) => {
   const [formData, setFormData] = useState({
     topic: "",
+    subTopic: "",
     groupName: "",
     memberLimit: "",
     mode: "Online",
@@ -17,7 +17,13 @@ const CreateGroupForm = ({ onSubmit, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
-    setFormData({ topic: "", groupName: "", memberLimit: "", mode: "Online" });
+    setFormData({
+      topic: "",
+      subTopic: "",
+      groupName: "",
+      memberLimit: "",
+      mode: "Online",
+    });
     onClose();
   };
 
@@ -26,14 +32,24 @@ const CreateGroupForm = ({ onSubmit, onClose }) => {
       <div className="modal-content">
         <form className="create-form" onSubmit={handleSubmit}>
           <h2>Create Group</h2>
+
           <input
             type="text"
             name="topic"
-            placeholder="Topic"
+            placeholder="Enter Topic (e.g. AI, Backend)"
             value={formData.topic}
             onChange={handleChange}
             required
           />
+
+          <input
+            type="text"
+            name="subTopic"
+            placeholder="Enter SubTopic (e.g. NLP, Spring)"
+            value={formData.subTopic}
+            onChange={handleChange}
+          />
+
           <input
             type="text"
             name="groupName"
@@ -42,6 +58,7 @@ const CreateGroupForm = ({ onSubmit, onClose }) => {
             onChange={handleChange}
             required
           />
+
           <input
             type="number"
             name="memberLimit"
@@ -51,10 +68,12 @@ const CreateGroupForm = ({ onSubmit, onClose }) => {
             required
             min="1"
           />
+
           <select name="mode" value={formData.mode} onChange={handleChange}>
             <option value="Online">Online</option>
             <option value="Offline">Offline</option>
           </select>
+
           <div className="modal-buttons">
             <button type="submit">create</button>
             <button type="button" className="cancel-button" onClick={onClose}>

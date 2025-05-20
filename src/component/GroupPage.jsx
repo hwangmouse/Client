@@ -1,27 +1,32 @@
-// src/components/GroupPage.js
 import React, { useState, useRef, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import "./GroupPage.css";
-
-const mockGroupData = {
-  name: "AI Study Group",
-  topic: "Artificial Intelligence and Deep Learning Systems for Real-World Applications",
-  members: ["user1", "user2", "user3"],
-  joinRequests: ["user4", "user5"],
-  announcements: ["Welcome to the group!", "First meeting on Monday 10am"],
-  schedule: ["Mon 10:00 - Intro to AI", "Wed 14:00 - ML Workshop"]
-};
 
 const GroupPage = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
+  const [group, setGroup] = useState(null);
   const [activeTab, setActiveTab] = useState("info");
-  const group = mockGroupData;
 
   const nameRef = useRef(null);
   const topicRef = useRef(null);
   const [shrinkTitle, setShrinkTitle] = useState(false);
   const [shrinkTopic, setShrinkTopic] = useState(false);
 
+  // ✅ 그룹 정보 로드
+  useEffect(() => {
+    const storedGroups = JSON.parse(localStorage.getItem("groups")) || [];
+    const foundGroup = storedGroups.find((g) => g.id === id);
+
+    if (!foundGroup) {
+      alert("그룹 정보를 찾을 수 없습니다.");
+      navigate("/studygroup");
+    } else {
+      setGroup(foundGroup);
+    }
+  }, [id, navigate]);
+
+  // ✅ 제목 줄이기 처리
   useEffect(() => {
     if (nameRef.current && nameRef.current.scrollWidth > nameRef.current.clientWidth) {
       setShrinkTitle(true);
@@ -29,7 +34,7 @@ const GroupPage = () => {
     if (topicRef.current && topicRef.current.scrollWidth > topicRef.current.clientWidth) {
       setShrinkTopic(true);
     }
-  }, []);
+  }, [group]);
 
   const handleApprove = (userId) => {
     alert(`${userId} approved`);
@@ -39,11 +44,16 @@ const GroupPage = () => {
     alert(`${userId} rejected`);
   };
 
+  if (!group) return <div>Loading...</div>;
+
   return (
     <div className="group-page-wrapper large">
       <div className="groupPage-header">
         <h1 ref={nameRef} className={shrinkTitle ? "shrink" : ""}>{group.name}</h1>
         <p ref={topicRef} className={shrinkTopic ? "shrink" : ""}>Topic: {group.topic}</p>
+        {group.subTopic && (
+          <p className="sub-topic-line">SubTopic: {group.subTopic}</p>
+        )}
       </div>
 
       <div className="tab-buttons">
@@ -55,17 +65,26 @@ const GroupPage = () => {
       </div>
 
       <div className={`tab-content ${activeTab === "info" ? "active" : ""}`}>
-        <p>This group is focused on exploring Artificial Intelligence.</p>
+        <p>This group is focused on <strong>{group.topic}</strong>.</p>
+
+        <div className="group-info-box">
+          <div className="group-info-item">
+            <strong>Mode</strong>: {group.mode}
+          </div>
+          <div className="group-info-item">
+            <strong>Member limit</strong>: {group.capacity}
+          </div>
+        </div>
       </div>
 
       <div className={`tab-content ${activeTab === "members" ? "active" : ""}`}>
-        {group.members.map((user) => (
+        {group.memberList?.map((user) => (
           <div className="member-card" key={user}>{user}</div>
         ))}
       </div>
 
       <div className={`tab-content ${activeTab === "requests" ? "active" : ""}`}>
-        {group.joinRequests.length === 0 ? (
+        {group.joinRequests?.length === 0 ? (
           <p>No pending requests.</p>
         ) : (
           group.joinRequests.map((user) => (
@@ -79,13 +98,13 @@ const GroupPage = () => {
       </div>
 
       <div className={`tab-content ${activeTab === "announcements" ? "active" : ""}`}>
-        {group.announcements.map((note, idx) => (
+        {group.announcements?.map((note, idx) => (
           <div className="member-card" key={idx}>{note}</div>
         ))}
       </div>
 
       <div className={`tab-content ${activeTab === "schedule" ? "active" : ""}`}>
-        {group.schedule.map((item, idx) => (
+        {group.schedule?.map((item, idx) => (
           <div className="member-card" key={idx}>{item}</div>
         ))}
       </div>

@@ -1,47 +1,50 @@
-// src/components/StudyGroupList.js
-import React, { useState } from "react"; // ✅ useState 추가
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./StudyGroupList.css";
-import CreateGroupForm from "./CreateGroupForm"; // ✅ 분리한 컴포넌트도 import
-// "./Header.jsx"는 실제로 사용하지 않으므로 제거해도 됨
-
-const exampleGroups = [
-  {
-    id: 10001,
-    topic: "Web Development",
-    members: 5,
-    capacity: 10,
-    mode: "Offline",
-  },
-  {
-    id: 10002,
-    topic: "Data Science",
-    members: 3,
-    capacity: 8,
-    mode: "Online",
-  },
-  {
-    id: 10003,
-    topic: "AI & ML",
-    members: 6,
-    capacity: 6,
-    mode: "Offline",
-  },
-];
+import CreateGroupForm from "./CreateGroupForm";
 
 const StudyGroupList = () => {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
+  const [groups, setGroups] = useState([]);
+  const [selectedTopic, setSelectedTopic] = useState("");
 
-  const handleJoin = (groupId) => {
-    alert("Join 요청이 전송되었습니다");
-  };
+  const topicOptions = ["AI", "Web", "Backend", "Data Science"];
+
+  useEffect(() => {
+    const storedGroups = JSON.parse(localStorage.getItem("groups")) || [];
+    setGroups(storedGroups);
+  }, []);
 
   const handleCreateSubmit = (formData) => {
-    alert(`그룹 "${formData.groupName}" 생성 완료`);
-    navigate(`/group/${formData.groupName}`); // ID로 이동 (실제론 고유 ID 추천)
+    const newGroup = {
+      id: Date.now().toString(),
+      topic: formData.topic,
+      subTopic: formData.subTopic || "",
+      name: formData.groupName,
+      members: 1,
+      capacity: Number(formData.memberLimit),
+      mode: formData.mode,
+      memberList: ["you"],
+      joinRequests: [],
+      announcements: [],
+      schedule: [],
+    };
+
+    const updatedGroups = [...groups, newGroup];
+    localStorage.setItem("groups", JSON.stringify(updatedGroups));
+    setGroups(updatedGroups);
+    setShowForm(false);
+    navigate(`/group/${newGroup.id}`);
   };
 
+  const handleJoin = (groupId) => {
+    alert(`Join 요청이 전송되었습니다.`);
+  };
+
+  const filteredGroups = groups.filter((group) => {
+    return !selectedTopic || group.topic === selectedTopic;
+  });
 
   return (
     <div className="studygroup-container">
@@ -63,40 +66,52 @@ const StudyGroupList = () => {
         />
       )}
 
-      <div className="search-container">
-        <input
-          type="text"
-          placeholder="Enter topic or group ID"
-          className="search-input"
-        />
-        <button className="search-button">Search</button>
+      <div className="filter-container">
+        <select
+          className="filter-select"
+          value={selectedTopic}
+          onChange={(e) => setSelectedTopic(e.target.value)}
+        >
+          <option value="">Select Topic</option>
+          {topicOptions.map((topic) => (
+            <option key={topic} value={topic}>{topic}</option>
+          ))}
+        </select>
       </div>
 
+      {/* ✅ 테이블 기반으로 구조 변경 */}
       <div className="group-box">
-        <div className="group-header">
-          <div>ID</div>
-          <div>Topic</div>
-          <div>Mode</div>
-          <div>Member</div>
-          <div></div>
-        </div>
-
-        {exampleGroups.map((group, index) => (
-          <div className="group-row" key={index}>
-            <div>{group.id}</div>
-            <div>{group.topic}</div>
-            <div>{group.mode}</div>
-            <div>
-              {group.members}/{group.capacity}
-            </div>
-            <button
-              className="join-button"
-              onClick={() => handleJoin(group.id)}
-            >
-              Join
-            </button>
-          </div>
-        ))}
+        <table className="group-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Topic</th>
+              <th>SubTopic</th>
+              <th>Mode</th>
+              <th>Member</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredGroups.map((group, index) => (
+              <tr key={index}>
+                <td>{group.id}</td>
+                <td>{group.topic}</td>
+                <td>{group.subTopic || "-"}</td>
+                <td>{group.mode}</td>
+                <td>{group.members}/{group.capacity || "-"}</td>
+                <td>
+                  <button
+                    className="join-button"
+                    onClick={() => handleJoin(group.id)}
+                  >
+                    Join
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
