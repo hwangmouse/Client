@@ -25,7 +25,10 @@ const Header = ({isAuthenticated, onLogout}) => {
           </>
         )}
         {isAuthenticated && (
-          <button className="login-button" onClick={onLogout}>Log Out</button>
+          <>
+            <Link to="/profile" className="nav-link">My Info</Link> {/* 회원정보 버튼 */}
+            <button className="login-button" onClick={onLogout}>Log Out</button>
+          </>
         )}
       </div>
     </header>

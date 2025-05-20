@@ -10,7 +10,7 @@ import CommunityPage from './component/CommunityPage';
 import CommunityDetail from './component/CommunityDetail';
 import SignupForm from './component/SignupForm';
 import GroupPage from "./component/GroupPage";
-
+import UserInfo from './component/UserInfo';
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -32,6 +32,7 @@ function App() {
           <Route path="/schedule" element={isAuthenticated ? <SchedulePage /> : <Navigate to="/login" replace />} />
           <Route path="/community" element={isAuthenticated ? <CommunityPage /> : <Navigate to="/login" replace />} />
           <Route path="/community/:id" element={<CommunityDetail />} />
+          <Route path="/profile" element={<UserInfo />} />
         </Routes>
       </div>
     </Router>
