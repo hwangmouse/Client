@@ -6,7 +6,7 @@ import './Header.css';
 const Header = ({isAuthenticated, onLogout}) => {
   return (
     <header className="header">
-      <div className="logo">StudySync</div>
+      <Link to={'/'}><div className="logo">StudySync</div></Link>
       <nav className="nav">
         <Link to="/" className="nav-link">Home</Link>
         <Link to="/studygroup" className="nav-link">studygroup</Link>
