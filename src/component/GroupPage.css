@@ -1,68 +1,70 @@
-/* GroupPage.css */
-
+/* 기존 wrapper 개선 - 더 넓고 고급스럽게 */
 .group-page-wrapper {
-  max-width: 800px;
+  max-width: 960px;
   margin: 3rem auto;
-  padding: 2rem;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   color: #222;
+  font-family: 'Segoe UI', sans-serif;
 }
 
 .group-page-wrapper.large {
-  max-width: 1000px;
+  max-width: 1100px;
 }
 
+/* 헤더 영역 강조 */
 .groupPage-header {
-  margin-bottom: 2rem;
+  background-color: #f3e8ff;
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
   text-align: center;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
+  box-shadow: inset 0 0 0 1px #e0d4f7;
 }
 
-.group-header h1 {
-  font-size: 2rem;
+.groupPage-header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
   margin-bottom: 0.5rem;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 100%;
+  color: #4a148c;
 }
 
-.group-header p {
-  color: #666;
-  font-size: 1rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.groupPage-header p {
+  font-size: 1.1rem;
+  color: #5f5f5f;
 }
 
-.group-header h1.shrink {
-  font-size: 1.5rem;
+.groupPage-header h1.shrink {
+  font-size: 1.6rem;
+}
+.groupPage-header p.shrink {
+  font-size: 0.9rem;
 }
 
-.group-header p.shrink {
-  font-size: 0.85rem;
-}
-
+/* 탭 버튼은 유지 + 가독성 향상 */
 .tab-buttons {
   display: flex;
   justify-content: center;
   margin-bottom: 2rem;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
 }
 
 .tab-buttons button {
   background-color: #f3e8ff;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.6rem 1.3rem;
   border-radius: 999px;
-  color: #4a148c;
-  font-weight: 500;
+  color: #6b21a8;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.tab-buttons button:hover {
+  background-color: #e9d5ff;
 }
 
 .tab-buttons button.active {
@@ -70,23 +72,40 @@
   color: white;
 }
 
+/* 내용 기본 */
 .tab-content {
   display: none;
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 .tab-content.active {
   display: block;
 }
 
-.member-card {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
+/* Info 탭 - 카드로 깔끔하게 정리 */
+.group-info-box {
+  background-color: #f9f9fb;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
 }
 
+.group-info-item {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  font-size: 0.95rem;
+  border-left: 4px solid #6b46c1;
+}
+
+/* 공통 카드 */
+.member-card,
 .announcement-card,
 .schedule-card {
   background-color: #f9f9f9;
@@ -97,6 +116,7 @@
   font-size: 0.95rem;
 }
 
+/* 요청 row */
 .request-row {
   display: flex;
   gap: 1rem;
@@ -128,4 +148,10 @@
 .request-row button.reject {
   background-color: #e53e3e;
   color: white;
+}
+
+.sub-topic-line {
+  font-size: 1rem;
+  color: #666;
+  margin-top: 0.3rem;
 }
