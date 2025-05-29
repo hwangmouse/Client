@@ -32,54 +32,47 @@ const HomePage = () => {
       <footer className="footer">
         <div className="footer-top">
           <div className="footer-logo">
-            <h2>Logo</h2>
-            <p>Our vision is to provide convenience and help increase your sales business.</p>
-            <div className="social-icons">
-              <a href="#">🌐</a>
-              <a href="#">🐦</a>
-              <a href="#">📷</a>
-            </div>
+            <h2>StudySync</h2>
+            <p>Our vision is to provide convenience for your study activity and help find your study mates.</p>
           </div>
+          <div className="footer-links">
+            <h4>What Services?</h4>
+            <ul>
+              <li>&nbsp;</li>
+              <li>Communication through community page</li>
+              <li>Edit your profile</li>
+              <li>Find study groups and mates</li>
+              <li>Manage your schedules</li>
+            </ul>
+          </div>
+          
 
           <div className="footer-links">
             <div>
-              <h4>About</h4>
+              <h4>Role</h4>
               <ul>
-                <li><a href="#">How it works</a></li>
-                <li><a href="#">Featured</a></li>
-                <li><a href="#">Partnership</a></li>
-                <li><a href="#">Business Relation</a></li>
+                <li>Back-end</li>
+                <li>&nbsp;</li>
+                <li>Front-end</li>
+                <li>&nbsp;</li>
+                <li>&nbsp;</li>
               </ul>
             </div>
-
             <div>
-              <h4>Community</h4>
+              <h4>Developer</h4>
               <ul>
-                <li><a href="#">Events</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Podcast</a></li>
-                <li><a href="#">Invite a friend</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4>Socials</h4>
-              <ul>
-                <li><a href="#">Discord</a></li>
-                <li><a href="#">Instagram</a></li>
-                <li><a href="#">Twitter</a></li>
-                <li><a href="#">Facebook</a></li>
+                <li>장예은</li>
+                <li>장인영</li>
+                <li>노율</li>
+                <li>최수정</li>
+                <li>황지은</li>
               </ul>
             </div>
           </div>
         </div>
 
         <div className="footer-bottom">
-          <p>©2022 Company Name. All rights reserved</p>
-          <div className="footer-policy">
-            <a href="#">Privacy & Policy</a>
-            <a href="#">Terms & Condition</a>
-          </div>
+          <p>©2025 SE Team3. </p>
         </div>
       </footer>
     </div>
